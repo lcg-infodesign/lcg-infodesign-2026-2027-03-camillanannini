@@ -7,9 +7,10 @@ let regioni = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Emilia-Romagna"
 
 
 //SETUP
-async function setup(){
+async function setup(){ //con questa versione di p5, non metot più i dati nel preload ma nel setup, con async -- a quel punto la tabella va caricata con await
+  //con async faccio sì che il programma svolga le azioni soltanto dopo che le ho scritte tutte e non appena inserisco i dati
   createCanvas(windowWidth, windowHeight);
-  myTable = await loadTable("assets/distribuzione_acqua.csv", ",", "header") //con async faccio sì che il programma svolga le azioni soltanto dopo che le ho scritte tutte e non appena inserisco i dati
+  myTable = await loadTable("assets/distribuzione_acqua.csv", ",", "header") //ora invece di "csv", si mette solo il carattere da cui sono separati i dati, quindi la vrigola
   mioFont = await loadFont("din.ttf"); //importo il font
   console.log("dati: ", myTable); //controllo che i dati siano stati caircati per bene
 
